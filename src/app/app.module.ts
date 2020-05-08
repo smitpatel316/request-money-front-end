@@ -9,9 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { AccountBalanceComponent } from './account-balance/account-balance.component';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AccountBalanceComponent, EventsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableModule,
     MatButtonModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

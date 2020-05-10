@@ -13,9 +13,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { EventsComponent } from './events/events.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
-  declarations: [AppComponent, AccountBalanceComponent, EventsComponent],
+  declarations: [AppComponent, AccountBalanceComponent, EventsComponent, ContactsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

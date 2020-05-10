@@ -5,6 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ApiService {
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
   constructor(private http: HttpClient) {}
   private BACKEND = 'http://localhost:5000/api/v1';
   getAllEvents(uid) {
@@ -17,14 +21,17 @@ export class ApiService {
     return this.http.get(`${this.BACKEND}/event/owe/${uid}`);
   }
   sendMoneyRequest(data) {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    };
-
     return this.http.post(
       `${this.BACKEND}/user/request-money`,
       data,
-      httpOptions
+      this.httpOptions
+    );
+  }
+  addNewContact(data) {
+    return this.http.post(
+      `${this.BACKEND}/user/contact`,
+      data,
+      this.httpOptions
     );
   }
 }

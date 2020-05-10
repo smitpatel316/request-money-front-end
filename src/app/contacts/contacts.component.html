@@ -1,8 +1,16 @@
+<button
+  mat-raised-button
+  color="primary"
+  style="float: left; margin-top: 2px; margin-bottom: 2px;"
+  (click)="openDialog()"
+>
+  New Contact
+</button>
 <table
   mat-table
   [dataSource]="contacts"
   class="mat-elevation-z8"
-  style="width: 100%;"
+  style="width: 100%; margin-top: 2px;"
 >
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -10,7 +18,7 @@
   <!-- Amount Column -->
   <ng-container matColumnDef="handle">
     <th mat-header-cell *matHeaderCellDef>Handle</th>
-    <td mat-cell *matCellDef="let element">${{ element.handle }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.handle }}</td>
   </ng-container>
 
   <!-- Name Column -->

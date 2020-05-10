@@ -25,6 +25,9 @@ export class AccountBalanceComponent implements OnInit {
     this.api.getAllContacts(this.DUMMY_UID).subscribe((contacts: any[]) => {
       this.contacts = contacts;
       this.api.getPaymentsNeeded(this.DUMMY_UID).subscribe((payments) => {
+        this.contacts = this.contacts.filter((contact) => {
+          return payments[contact.hash] !== undefined;
+        });
         this.contacts.forEach((contact) => {
           contact.amount = payments[contact.hash];
         });

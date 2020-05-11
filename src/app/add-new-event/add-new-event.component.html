@@ -1,32 +1,70 @@
 <h2 mat-dialog-title>Add New Event</h2>
 
 <mat-dialog-content [formGroup]="form">
-  <mat-form-field>
-    <input matInput placeholder="Name" formControlName="name" />
-  </mat-form-field>
-  &nbsp;
-  <mat-form-field>
-    <input matInput placeholder="Paid By" formControlName="paidBy" />
-  </mat-form-field>
-  &nbsp;
-  <mat-form-field>
-    <input
-      matInput
-      type="number"
-      placeholder="Amount"
-      formControlName="amount"
-    />
-  </mat-form-field>
-  <button mat-button (click)="addUser()">Add User</button>
-  <div *ngFor="let control of event.users.controls; index as i">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Paid By" formControlName="paidBy" />
+    </mat-form-field>
+    &nbsp;
     <mat-form-field>
       <input
         matInput
-        placeholder="Contact Hash"
-        [formControl]="event.users.controls[i]"
+        type="number"
+        placeholder="Amount"
+        formControlName="amount"
       />
     </mat-form-field>
   </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Contact" [(value)]="selectedContact">
+        <mat-option
+          *ngFor="let contact of contacts"
+          value="{{ contact.name }}"
+          >{{ contact.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="addUser()">Add User</button>
+    <table
+      mat-table
+      [dataSource]="selectedContacts"
+      class="mat-elevation-z8"
+      style="width: 50%;"
+    >
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+      <ng-container matColumnDef="remove" style="float: left;">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-mini-fab
+            aria-label="Example icon button with a vertical three dot icon"
+            color="warn"
+            (click)="removeUser(element)"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name" style="float: right;">
+        <th mat-header-cell *matHeaderCellDef>User</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <!-- <div *ngFor="let control of event.users.controls; index as i">
+
+  </div> -->
 </mat-dialog-content>
 
 <mat-dialog-actions>

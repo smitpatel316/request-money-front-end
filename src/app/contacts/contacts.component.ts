@@ -3,13 +3,7 @@ import { ApiService } from '../api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddNewContactComponent } from '../add-new-contact/add-new-contact.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-export interface Contact {
-  name: string;
-  handle: string;
-  handle_type: string;
-  id: string;
-  hash: string;
-}
+import { Contact } from '../models/contact';
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',

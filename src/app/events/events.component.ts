@@ -3,17 +3,15 @@ import { ApiService } from '../api.service';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddNewEventComponent } from '../add-new-event/add-new-event.component';
-export interface Event {
-  name: string;
-  amount: number;
-}
+import { Event } from '../models/event';
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent implements OnInit {
-  events = [];
+  events: Event[] = [];
   displayedColumns: string[] = ['name', 'amount'];
   DUMMY_UID = '5eb45480a6f04c792cb73bdd';
   constructor(
@@ -35,13 +33,6 @@ export class EventsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((val) => {
       if (val) {
-        const tempUsers = [];
-        val.users.controls.forEach((control) => {
-          if (control.touched) {
-            tempUsers.push(control.value);
-          }
-        });
-        val.users = tempUsers;
         this.api.addNewEvent(val).subscribe((response) => {
           this.ngOnInit();
           this._snackBar.open(response['message'], 'Close', {

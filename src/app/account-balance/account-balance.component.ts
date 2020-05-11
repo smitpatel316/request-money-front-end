@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-export interface Contact {
-  name: string;
-  amount: number;
-  id: string;
-  hash: string;
-  handle: string;
-  handleType: string;
-}
+import { Contact } from '../models/contact';
 @Component({
   selector: 'app-account-balance',
   templateUrl: './account-balance.component.html',

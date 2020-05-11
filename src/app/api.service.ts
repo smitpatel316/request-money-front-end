@@ -34,4 +34,7 @@ export class ApiService {
       this.httpOptions
     );
   }
+  addNewEvent(data) {
+    return this.http.post(`${this.BACKEND}/event/`, data, this.httpOptions);
+  }
 }

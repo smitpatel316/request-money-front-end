@@ -15,11 +15,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { EventsComponent } from './events/events.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AddNewContactComponent } from './add-new-contact/add-new-contact.component';
+import { AddNewEventComponent } from './add-new-event/add-new-event.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AddNewContactComponent } from './add-new-contact/add-new-contact.compon
     EventsComponent,
     ContactsComponent,
     AddNewContactComponent,
+    AddNewEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { AddNewContactComponent } from './add-new-contact/add-new-contact.compon
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

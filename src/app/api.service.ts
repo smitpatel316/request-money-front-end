@@ -37,4 +37,10 @@ export class ApiService {
   addNewEvent(data) {
     return this.http.post(`${this.BACKEND}/event/`, data, this.httpOptions);
   }
+  payout(uid, contactHash) {
+    return this.http.delete(
+      `${this.BACKEND}/user/${uid}/${contactHash}/payout`,
+      this.httpOptions
+    );
+  }
 }

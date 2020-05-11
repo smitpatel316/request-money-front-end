@@ -24,7 +24,6 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getAllEvents(this.DUMMY_UID).subscribe((response: any[]) => {
-      console.log(response);
       this.events = response;
     });
   }

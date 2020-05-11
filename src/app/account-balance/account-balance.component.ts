@@ -15,7 +15,7 @@ export interface Contact {
   styleUrls: ['./account-balance.component.scss'],
 })
 export class AccountBalanceComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'amount', 'handle'];
+  displayedColumns: string[] = ['name', 'amount', 'handle', 'payout'];
   DUMMY_UID = '5eb45480a6f04c792cb73bdd';
   contacts = [];
   constructor(private api: ApiService, private _snackBar: MatSnackBar) {}
@@ -43,5 +43,13 @@ export class AccountBalanceComponent implements OnInit {
         });
         console.log(response);
       });
+  }
+  payout(contact: Contact) {
+    this.api.payout(this.DUMMY_UID, contact.hash).subscribe((response) => {
+      this.ngOnInit();
+      this._snackBar.open(response['message'], 'Close', {
+        duration: 2000,
+      });
+    });
   }
 }

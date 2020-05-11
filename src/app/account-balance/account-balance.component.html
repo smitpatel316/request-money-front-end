@@ -24,6 +24,19 @@
     <th mat-header-cell *matHeaderCellDef width="33%">Handle</th>
     <td mat-cell *matCellDef="let element">{{ element.handle }}</td>
   </ng-container>
+  <ng-container matColumnDef="payout">
+    <th mat-header-cell *matHeaderCellDef width="33%"></th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-stroked-button
+        color="warn"
+        style="float: right; margin-right: 5px; margin-top: 5px;"
+        (click)="payout(element)"
+      >
+        Money Received?
+      </button>
+    </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns" width="33%"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns" width="33%"></tr>

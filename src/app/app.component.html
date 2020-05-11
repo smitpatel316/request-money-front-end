@@ -1,12 +1,20 @@
 <h1>Welcome Smit Patel!</h1>
-<mat-tab-group>
+<mat-tab-group mat-align-tabs="center">
   <mat-tab label="Account Balance">
-    <app-account-balance></app-account-balance>
+    <ng-template matTabContent>
+      <app-account-balance></app-account-balance>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Contacts">
+    <ng-template matTabContent>
+      <app-contacts></app-contacts>
+    </ng-template>
   </mat-tab>
   <mat-tab label="Events">
-    <app-events></app-events>
+    <ng-template matTabContent>
+      <app-events></app-events>
+    </ng-template>
   </mat-tab>
-  <mat-tab label="Contacts"> <app-contacts></app-contacts> </mat-tab>
 </mat-tab-group>
 
 <router-outlet></router-outlet>
